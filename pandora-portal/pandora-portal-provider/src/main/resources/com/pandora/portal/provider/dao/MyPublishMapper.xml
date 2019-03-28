@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pandora.portal.provider.dao.MyPublishMapper">
+	<resultMap id="resultMap" type="com.pandora.portal.model.MyPublish">
+		<result property="id" column="ID" />
+		<result property="userId" column="USERID" />
+		<result property="type" column="TYPE" />
+		<result property="itemsName" column="ITEMSNAME" />
+		<result property="publishTime" column="PUBLISHTIME" />
+	</resultMap>
+	
+	<select id="findByPage" resultMap="resultMap" parameterType="java.util.Map">
+		SELECT * FROM ( 
+	       SELECT tt.*, ROWNUM AS rowno FROM ( 
+	               		SELECT t.id, t.userid, t.type, t.itemsname, t.publishtime FROM shfpdjpt.my_publish t  
+	               		<if test="word!=null">
+	               				WHERE  t.itemsname like  CONCAT(CONCAT('%', #{word}), '%')
+	               		</if>
+	               ) tt 
+	         WHERE ROWNUM <![CDATA[<=]]> #{endSize} ) tb 
+	 	WHERE tb.rowno <![CDATA[>]]> #{firstSize}
+	</select>
+</mapper>

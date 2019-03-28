@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.pandora</groupId>
+		<artifactId>pandora-portal</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>pandora-portal-model</artifactId>
+	<name>${project.artifactId}</name>
+	<url>http://maven.apache.org</url>
+
+	<dependencies>
+		<!-- module -->
+		<dependency>
+			<groupId>com.pandora</groupId>
+			<artifactId>pandora-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<!-- lucene -->
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-core</artifactId>
+		</dependency>
+		<!-- Lucene Service -->
+		<dependency>
+			<groupId>bangyiba.pepper</groupId>
+			<artifactId>lucene-service</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>bangyiba.pepper</groupId>
+			<artifactId>lucene-spring</artifactId>
+		</dependency>
+	</dependencies>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+</project>
